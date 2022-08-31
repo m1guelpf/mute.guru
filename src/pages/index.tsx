@@ -2,9 +2,9 @@ import dynamic from 'next/dynamic'
 import { FC, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { signIn } from 'next-auth/react'
 import useSession from '@/hooks/useSession'
 import TwitterIcon from '@/components/Icons/TwitterIcon'
+import { signIn } from '@/lib/auth'
 const ThemeSwitcher = dynamic(() => import('@/components/ThemeSwitcher'), { ssr: false })
 const ThreadCarousel = dynamic(() => import('@/components/RandomThread').then(mod => mod.ThreadCarousel), {
 	ssr: false,
@@ -64,7 +64,7 @@ const Landing: FC = () => {
 						<motion.button
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
-							onClick={() => signIn('twitter')}
+							onClick={() => signIn()}
 							className="bg-twitter text-lg text-white rounded-full py-2 px-4 flex items-center space-x-1"
 						>
 							Get Started
