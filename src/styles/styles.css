@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '@fontsource/inter/variable.css';
+@import 'react-loading-skeleton/dist/skeleton.css';

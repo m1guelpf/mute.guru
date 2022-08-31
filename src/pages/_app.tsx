@@ -1,13 +1,15 @@
-import 'tailwindcss/tailwind.css'
+import '@/styles/styles.css'
+import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from 'next-themes'
-import Web3Provider from '@/components/Web3Provider'
+import SkeletonProvider from '@/components/SkeletonProvider'
 
 const App = ({ Component, pageProps }) => {
 	return (
 		<ThemeProvider attribute="class">
-			<Web3Provider>
+			<SkeletonProvider>
+				<Toaster />
 				<Component {...pageProps} />
-			</Web3Provider>
+			</SkeletonProvider>
 		</ThemeProvider>
 	)
 }
