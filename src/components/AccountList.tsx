@@ -145,7 +145,7 @@ const AccountCell: FC<{ account: Account; tab: 'muted' | 'unmuted' }> = memo(({ 
 							<p className="text-sm mt-1" dangerouslySetInnerHTML={{ __html: accountBio }} />
 						) : (
 							<div className="mt-1">
-								<Skeleton count={2} width={500} />
+								<Skeleton count={2} width="90%" />
 							</div>
 						)}
 					</div>

@@ -1,15 +1,16 @@
 import useSWR from 'swr'
+import dynamic from 'next/dynamic'
 import toast from 'react-hot-toast'
 import { HOURS } from '@/lib/consts'
 import { GetStaticProps } from 'next'
 import { motion } from 'framer-motion'
 import { getClient } from '@/lib/twitter'
 import { Account } from '@/types/twitter'
-import Toolbar from '@/components/Toolbar'
 import NavBar, { Tab } from '@/components/NavBar'
-import AccountList from '@/components/AccountList'
 import { muteAccount, unmuteAccount } from '@/lib/utils'
 import { FC, memo, useCallback, useMemo, useState } from 'react'
+const Toolbar = dynamic(() => import('@/components/Toolbar'), { ssr: false })
+const AccountList = dynamic(() => import('@/components/AccountList'), { ssr: false })
 
 const fetcher = (url: string) => {
 	return fetch(url).then(async res => {
@@ -22,9 +23,9 @@ const fetcher = (url: string) => {
 const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
 	const [tab, setTab] = useState<'unmuted' | 'muted'>('unmuted')
 	const {
-		data: muted,
-		isLoading,
 		mutate,
+		isLoading,
+		data: muted,
 	} = useSWR('/api/muted', fetcher, {
 		revalidateOnFocus: false,
 		shouldRetryOnError: false,
