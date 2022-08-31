@@ -36,5 +36,5 @@ export const TWEET_SKELETON = {
 }
 
 export const TWEET_LINK = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-	'🔇 Just freed my timeline from engagement farmers using mute.guru by @m1guelpf'
+	'🔇 Just freed my timeline from engagement farmers using https://mute.guru by @m1guelpf'
 )}`
