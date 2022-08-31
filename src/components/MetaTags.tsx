@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import cardImg from '@images/card.jpg'
 
 const MetaTags = () => {
 	const meta = {
@@ -6,7 +7,7 @@ const MetaTags = () => {
 		title: 'Take back your feed | mute.guru',
 		description:
 			'Obliterate all the 🧵👇  from your feed with one-click, and go back to enjoying the content you actually care about.',
-		image: '',
+		image: cardImg.src,
 	}
 
 	return (
