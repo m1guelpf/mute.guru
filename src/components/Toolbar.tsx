@@ -33,12 +33,31 @@ const Toolbar: FC<Props> = ({ children }) => {
 					{resolvedTheme == 'light' ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
 				</button>
 			</div>
-			<div className="">
-				<motion.p
-					layout
-					transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-					className="text-sm text-gray-600 dark:text-gray-500 hidden md:inline"
+			<motion.p
+				layout
+				transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+				className="text-sm text-gray-600 dark:text-gray-500 hidden md:inline"
+			>
+				Created by{' '}
+				<a
+					href="https://twitter.com/m1guelpf"
+					target="_blank"
+					className="text-twitter hover:underline"
+					rel="noreferrer"
 				>
+					@m1guelpf
+				</a>
+				. Inspired by{' '}
+				<a className="hover:underline" href="https://mute.vc" target="_blank" rel="noreferrer">
+					mute.vc
+				</a>
+			</motion.p>
+			<motion.div
+				layout
+				transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+				className="md:hidden flex flex-col items-center justify-center space-y-0.5"
+			>
+				<p className="text-xs text-gray-600 dark:text-gray-500">
 					Created by{' '}
 					<a
 						href="https://twitter.com/m1guelpf"
@@ -48,40 +67,19 @@ const Toolbar: FC<Props> = ({ children }) => {
 					>
 						@m1guelpf
 					</a>
-					. Inspired by{' '}
-					<a className="hover:underline" href="https://mute.vc" target="_blank" rel="noreferrer">
+				</p>
+				<p className="text-xs text-gray-600 dark:text-gray-500">
+					Inspired by{' '}
+					<a
+						href="https://twitter.com/m1guelpf"
+						target="_blank"
+						className="text-twitter hover:underline"
+						rel="noreferrer"
+					>
 						mute.vc
 					</a>
-				</motion.p>
-				<motion.div
-					layout
-					transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-					className="md:hidden flex flex-col items-center justify-center space-y-0.5"
-				>
-					<p className="text-xs text-gray-600 dark:text-gray-500">
-						Created by{' '}
-						<a
-							href="https://twitter.com/m1guelpf"
-							target="_blank"
-							className="text-twitter hover:underline"
-							rel="noreferrer"
-						>
-							@m1guelpf
-						</a>
-					</p>
-					<p className="text-xs text-gray-600 dark:text-gray-500">
-						Inspired by{' '}
-						<a
-							href="https://twitter.com/m1guelpf"
-							target="_blank"
-							className="text-twitter hover:underline"
-							rel="noreferrer"
-						>
-							mute.vc
-						</a>
-					</p>
-				</motion.div>
-			</div>
+				</p>
+			</motion.div>
 			{children}
 		</footer>
 	)
