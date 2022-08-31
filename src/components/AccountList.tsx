@@ -45,12 +45,7 @@ const AccountList: FC<Props> = ({ accounts, tab, isLoading }) => {
 						</motion.a>
 						<p className="text-sm">
 							Missed someone?{' '}
-							<a
-								target="_blank"
-								rel="noreferrer"
-								className="underline"
-								href="https://twitter.com/m1guelpf/status/1564717737548587009"
-							>
+							<a target="_blank" rel="noreferrer" className="underline" href="https://dm.link/m1guelpf">
 								Suggest an account
 							</a>
 							.
