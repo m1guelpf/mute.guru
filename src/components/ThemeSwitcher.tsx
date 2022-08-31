@@ -1,7 +1,8 @@
 import { useCallback } from 'react'
+import SunIcon from './Icons/SunIcon'
+import MoonIcon from './Icons/MoonIcon'
 import { classNames } from '@/lib/utils'
 import { useTheme as _useTheme } from 'next-themes'
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
 export const useTheme = () => {
 	const { resolvedTheme, setTheme, ...args } = _useTheme()

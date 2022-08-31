@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import SunIcon from './Icons/SunIcon'
 import { motion } from 'framer-motion'
+import MoonIcon from './Icons/MoonIcon'
 import { useTheme } from './ThemeSwitcher'
 import useSession from '@/hooks/useSession'
 import { FC, PropsWithChildren } from 'react'
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
 type Props = PropsWithChildren<{}>
 
