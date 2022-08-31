@@ -1,10 +1,14 @@
 import dynamic from 'next/dynamic'
 import { FC, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
 import useSession from '@/hooks/useSession'
-import { BoltIcon, ClockIcon, SignalIcon } from '@heroicons/react/24/outline'
+import TwitterIcon from '@/components/Icons/TwitterIcon'
 const ThemeSwitcher = dynamic(() => import('@/components/ThemeSwitcher'), { ssr: false })
+const ThreadCarousel = dynamic(() => import('@/components/RandomThread').then(mod => mod.ThreadCarousel), {
+	ssr: false,
+})
 
 const Landing: FC = () => {
 	const router = useRouter()
@@ -17,80 +21,62 @@ const Landing: FC = () => {
 	}, [router, session.status])
 
 	return (
-		<div className="min-h-screen dark:bg-black flex flex-col">
-			<ThemeSwitcher className="fixed bottom-3 lg:bottom-auto lg:top-3 right-3" />
-			<main className="mt-24 flex flex-col items-center justify-center space-y-8 flex-1 px-10">
-				<h1 className="dark:text-white font-bold text-center text-4xl">
-					Free your Twitter feed from threadooors
-				</h1>
-				<p className="text-gray-500 dark:text-gray-400 text-center text-lg max-w-xs mx-auto">
-					Silence engagement farmers from your feed
-				</p>
-				<button
-					onClick={() => signIn('twitter')}
-					className="bg-twitter text-white py-3 w-full max-w-xs mx-auto rounded"
+		<div className="min-h-screen bg-gray-100 dark:bg-black flex flex-col">
+			<ThemeSwitcher className="fixed bottom-3 lg:bottom-auto lg:top-3 right-3 z-30" />
+			<div className="flex-1 flex flex-col items-center justify-center -mt-72">
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<motion.div
+					initial={{ opacity: 0, background: 'transparent' }}
+					animate={{ opacity: 1, background: 'rgba(0, 0, 0, .2)' }}
+					transition={{ delay: 0.5, duration: 0.5 }}
+					className="absolute inset-0 h-full w-full flex flex-col items-center justify-center z-20 overflow-hidden"
 				>
-					Continue with Twitter
-				</button>
-				<div className="!my-24 flex flex-col lg:flex-row items-center justify-between space-y-14 lg:space-y-0 lg:space-x-10">
-					<div className="max-w-md space-y-4">
-						<div className="p-3 bg-gray-100 dark:bg-gray-900 rounded-full inline-flex items-center justify-center">
-							<SignalIcon className="w-6 h-6 text-gray-600 dark:text-gray-400" />
-						</div>
-						<div className="space-y-1">
-							<p className="dark:text-white font-medium text-lg">Cut through noise</p>
-							<p className="text-gray-500 max-w-xs text-sm">
-								Builders spend more time building and less time tweeting — don’t miss their tweets in a
-								jumble of nonsense.
-							</p>
-						</div>
-					</div>
-					<div className="max-w-md space-y-4">
-						<div className="p-3 bg-gray-100 dark:bg-gray-900 rounded-full inline-flex items-center justify-center">
-							<BoltIcon className="w-6 h-6 text-gray-600 dark:text-gray-400" />
-						</div>
-						<div className="space-y-1">
-							<p className="dark:text-white font-medium text-lg">Built for speed</p>
-							<p className="text-gray-500 max-w-xs text-sm">
-								Blazing fast mute and unmute so you can switch on and off investor chatter whenever
-								you’d like.
-							</p>
-						</div>
-					</div>
-					<div className="max-w-md space-y-4">
-						<div className="p-3 bg-gray-100 dark:bg-gray-900 rounded-full inline-flex items-center justify-center">
-							<ClockIcon className="w-6 h-6 text-gray-600 dark:text-gray-400" />
-						</div>
-						<div className="space-y-1">
-							<p className="dark:text-white font-medium text-lg">More quality time</p>
-							<p className="text-gray-500 max-w-xs text-sm">
-								Less threads means less content to consume and more time to do literally anything else.
-							</p>
-						</div>
-					</div>
-				</div>
-			</main>
-			<footer className="bg-gray-100 dark:bg-gray-900 border-t dark:border-gray-800 p-6 flex items-center justify-between z-10">
-				<p className="text-sm text-gray-500">Designed in Berlin 🇩🇪</p>
-				<div className="flex items-center space-x-4">
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://twitter.com/m1guelpf"
-						className="text-gray-500 text-sm hover:underline"
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: 1, duration: 0.5 }}
+						className="bg-white/40 dark:bg-black/30 backdrop-filter backdrop-blur-lg backdrop-saturate-150 rounded-xl md:max-w-2xl py-10 mx-2 md:mx-auto md:w-full flex flex-col items-center justify-around px-6 md:px-0"
 					>
-						Twitter
-					</a>
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://github.com/m1guelpf/mute.guru"
-						className="text-gray-500 text-sm hover:underline"
-					>
-						GitHub
-					</a>
-				</div>
-			</footer>
+						<p className="text-3xl md:text-5xl font-bold text-twitter text-center">
+							Is this what{' '}
+							<TwitterIcon
+								aria-label="Twitter logo"
+								className="inline w-12 h-12 md:w-16 md:h-16 fill-current stroke-transparent -mt-1"
+							/>
+							has
+							<br /> become?
+						</p>
+						<div className="my-6 space-y-4 max-w-xl mx-auto">
+							<p className="text-lg md:text-2xl text-black/80 dark:text-white/80">
+								Twitter is an amazing platform for connecting with others, sharing knowledge and making
+								friends. But lately, it’s been co-opted by &quot;growth hackers&quot; trying to game the
+								algorithm.
+							</p>
+							<p className="md:text-xl text-black/60 dark:text-white/60">
+								mute.guru lets you take back your feed with a single click. Log in, choose who to mute,
+								and go back to scrolling in peace.
+							</p>
+						</div>
+						<motion.button
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
+							onClick={() => signIn('twitter')}
+							className="bg-twitter text-lg text-white rounded-full py-2 px-4 flex items-center space-x-1"
+						>
+							Get Started
+						</motion.button>
+					</motion.div>
+				</motion.div>
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<ThreadCarousel />
+				<ThreadCarousel />
+			</div>
 		</div>
 	)
 }

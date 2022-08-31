@@ -1,8 +1,8 @@
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { useTheme } from './ThemeSwitcher'
 import useSession from '@/hooks/useSession'
 import { FC, PropsWithChildren } from 'react'
-import { motion } from 'framer-motion'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
 type Props = PropsWithChildren<{}>

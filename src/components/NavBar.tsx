@@ -1,5 +1,5 @@
-import { classNames } from '@/lib/utils'
 import { motion } from 'framer-motion'
+import { classNames } from '@/lib/utils'
 
 const NavBar = ({ children }) => {
 	return <header className="bg-white dark:bg-black border-b dark:border-gray-800 flex">{children}</header>

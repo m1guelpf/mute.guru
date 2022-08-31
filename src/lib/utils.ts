@@ -1,8 +1,16 @@
-import { Account } from '@/types/twitter'
 import toast from 'react-hot-toast'
+import { Account } from '@/types/twitter'
 
 export const classNames = (...classes: string[]): string => {
 	return classes.filter(Boolean).join(' ')
+}
+
+export const randomNumber = (min: number, max: number): number => {
+	return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+export const randomItem = <T>(items: T[]): T => {
+	return items[randomNumber(0, items.length - 1)]
 }
 
 export const muteAccount = async (account: Account) => {

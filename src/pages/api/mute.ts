@@ -1,7 +1,7 @@
 import { getClient } from '@/lib/twitter'
 import { authOptions } from './auth/[...nextauth]'
-import { Session, unstable_getServerSession } from 'next-auth'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { Session, unstable_getServerSession } from 'next-auth'
 
 type TwitterSession = Session & {
 	accessToken: string
