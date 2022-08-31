@@ -3,15 +3,13 @@ import toast from 'react-hot-toast'
 import { HOURS } from '@/lib/consts'
 import { GetStaticProps } from 'next'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 import { getClient } from '@/lib/twitter'
 import { Account } from '@/types/twitter'
 import Toolbar from '@/components/Toolbar'
-import useSession from '@/hooks/useSession'
 import NavBar, { Tab } from '@/components/NavBar'
 import AccountList from '@/components/AccountList'
 import { muteAccount, unmuteAccount } from '@/lib/utils'
-import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { FC, memo, useCallback, useMemo, useState } from 'react'
 
 const fetcher = (url: string) => {
 	return fetch(url).then(async res => {
@@ -22,8 +20,6 @@ const fetcher = (url: string) => {
 }
 
 const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
-	const router = useRouter()
-	const session = useSession()
 	const [tab, setTab] = useState<'unmuted' | 'muted'>('unmuted')
 	const {
 		data: muted,
@@ -34,12 +30,6 @@ const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
 		shouldRetryOnError: false,
 		onError: error => toast.error(`${error}. Please try again later.`),
 	})
-
-	useEffect(() => {
-		if (session.status != 'unauthenticated') return
-
-		router.push('/')
-	}, [router, session.status])
 
 	const filteredAccounts = useMemo<Account[]>(() => {
 		if (!muted) return []
