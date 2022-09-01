@@ -22,7 +22,7 @@ const ThemeSwitcher = ({ className = '' }) => {
 			onClick={toggleTheme}
 			className={classNames(
 				className,
-				'flex items-center justify-center space-x-2 bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-full px-3 py-2'
+				'flex items-center justify-center space-x-2 bg-black/10 dark:bg-white/10 backdrop-filter backdrop-blur-lg backdrop-saturate-150 text-white/70 rounded-full px-3 py-2'
 			)}
 		>
 			{resolvedTheme == 'light' ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}

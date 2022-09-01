@@ -16,7 +16,7 @@ const useSession = (): Data => {
 	const { data, isLoading, mutate } = useSWR<Session>('/api/auth/session', fetcher)
 
 	const logOut = useCallback(async () => {
-		await signOut({ redirect: false })
+		await signOut({ callbackUrl: '/' })
 
 		mutate(null, true)
 	}, [mutate])
