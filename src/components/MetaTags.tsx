@@ -6,7 +6,7 @@ const MetaTags = () => {
 		url: 'https://mute.guru',
 		title: 'Take back your feed | mute.guru',
 		description:
-			'Obliterate all the 🧵👇  from your feed with one-click, and go back to enjoying the content you actually care about.',
+			"Obliterate all 🧵👇's from your feed with one-click, and go back to enjoying the content you actually care about.",
 		image: cardImg.src,
 	}
 
