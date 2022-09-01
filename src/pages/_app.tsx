@@ -11,11 +11,7 @@ const App = ({ Component, pageProps }) => {
 			<SkeletonProvider>
 				<MetaTags />
 				<Toaster />
-				<Scroll.Container className="h-screen">
-					<Scroll.Section className="h-screen">
-						<Component {...pageProps} />
-					</Scroll.Section>
-				</Scroll.Container>
+				<Component {...pageProps} />
 			</SkeletonProvider>
 		</ThemeProvider>
 	)

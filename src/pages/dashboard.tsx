@@ -61,7 +61,7 @@ const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
 
 	return (
 		<div className="bg-gray-100 dark:bg-black">
-			<div className="md:max-w-xl md:mx-auto bg-white dark:bg-black h-screen border-x dark:border-gray-800 flex flex-col">
+			<div className="md:max-w-xl md:mx-auto bg-white dark:bg-black md:h-screen border-x dark:border-gray-800 flex flex-col">
 				<NavBar>
 					<Tab active={tab == 'unmuted'} onClick={() => setTab('unmuted')}>
 						Unmuted
@@ -70,7 +70,7 @@ const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
 						Muted
 					</Tab>
 				</NavBar>
-				<main className="pb-16 flex-1 overflow-y-scroll">
+				<main className="pb-14 flex-1 md:overflow-y-scroll">
 					<AccountList accounts={filteredAccounts} tab={tab} isLoading={isLoading} />
 				</main>
 				<Toolbar>

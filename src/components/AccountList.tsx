@@ -20,7 +20,7 @@ type Props = {
 const AccountList: FC<Props> = ({ accounts, tab, isLoading }) => {
 	if (accounts.length == 0 && !isLoading) {
 		return (
-			<div className="flex flex-col items-center justify-center px-4 py-4 space-y-10 text-gray-600 dark:text-gray-500 h-full">
+			<div className="flex flex-col items-center justify-center px-4 py-4 space-y-10 text-gray-600 dark:text-gray-500 h-[90vh] md:h-full">
 				<div className="space-y-4 flex flex-col items-center justify-center">
 					{tab === 'unmuted' ? (
 						<SpeakerXMarkIcon className="w-10 h-10" />

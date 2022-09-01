@@ -2,7 +2,11 @@ import { motion } from 'framer-motion'
 import { classNames } from '@/lib/utils'
 
 const NavBar = ({ children }) => {
-	return <header className="bg-white dark:bg-black border-b dark:border-gray-800 flex">{children}</header>
+	return (
+		<header className="bg-white w-full dark:bg-black border-b dark:border-gray-800 flex fixed top-[env(safe-area-inset-top)] md:static z-20">
+			{children}
+		</header>
+	)
 }
 
 export const Tab = ({ children, onClick, active }) => {

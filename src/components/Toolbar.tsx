@@ -13,7 +13,7 @@ const Toolbar: FC<Props> = ({ children }) => {
 	const { resolvedTheme, toggleTheme } = useTheme()
 
 	return (
-		<footer className="bg-white dark:bg-black border-t dark:border-gray-800 flex items-center justify-between w-full md:max-w-xl md:mx-auto md:px-4 px-3 py-2">
+		<footer className="bg-white dark:bg-black border-t dark:border-gray-800 flex items-center justify-between w-full md:max-w-xl md:mx-auto md:px-4 px-3 py-2 fixed bottom-[env(safe-area-inset-bottom)] md:static">
 			<div className="flex items-start space-x-2">
 				{session.status == 'authenticated' && (
 					<button title="Log Out" onClick={session.logOut}>
@@ -27,7 +27,7 @@ const Toolbar: FC<Props> = ({ children }) => {
 					</button>
 				)}
 				<button
-					className="p-2.5 bg-gray-200 dark:bg-gray-800 flex items-center justify-center w-5 h-5 box-content rounded-full"
+					className="p-2.5 bg-gray-100 text-gray-600 dark:text-gray-400 dark:bg-gray-800 flex items-center justify-center w-5 h-5 box-content rounded-full"
 					onClick={toggleTheme}
 				>
 					{resolvedTheme == 'light' ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
