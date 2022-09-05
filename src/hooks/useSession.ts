@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { Session } from 'next-auth'
-import { useCallback, useEffect } from 'react'
 import { signOut } from 'next-auth/react'
+import { useCallback, useEffect } from 'react'
 
 type Data = {
 	name?: string

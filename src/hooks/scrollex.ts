@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useAnimationFrame, useMotionValue, useTransform } from 'framer-motion'
 import { useScrollState, useScrollValue } from 'scrollex'
+import { useAnimationFrame, useMotionValue, useTransform } from 'framer-motion'
 
 type ScrollDirection = 'up' | 'down'
 type ScrollStatus = ScrollDirection | 'static'

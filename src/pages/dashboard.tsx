@@ -6,6 +6,7 @@ import { GetStaticProps } from 'next'
 import { motion } from 'framer-motion'
 import { getClient } from '@/lib/twitter'
 import { Account } from '@/types/twitter'
+import useSession from '@/hooks/useSession'
 import NavBar, { Tab } from '@/components/NavBar'
 import { muteAccount, unmuteAccount } from '@/lib/utils'
 import { FC, memo, useCallback, useMemo, useState } from 'react'
@@ -21,6 +22,7 @@ const fetcher = (url: string) => {
 }
 
 const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
+	const session = useSession()
 	const [tab, setTab] = useState<'unmuted' | 'muted'>('unmuted')
 	const {
 		mutate,
@@ -35,10 +37,10 @@ const Dashboard: FC<{ accounts: Account[] }> = ({ accounts }) => {
 	const filteredAccounts = useMemo<Account[]>(() => {
 		if (!muted) return []
 
-		return accounts.filter(account =>
-			tab == 'muted' ? muted.includes(account.id_str) : !muted.includes(account.id_str)
-		)
-	}, [accounts, muted, tab])
+		return accounts
+			.filter(account => account.name != session?.name)
+			.filter(account => (tab == 'muted' ? muted.includes(account.id_str) : !muted.includes(account.id_str)))
+	}, [accounts, muted, tab, session])
 
 	const toggleMuteAll = useCallback(async () => {
 		if (!filteredAccounts) throw toast.error('Please wait for your muted accounts to load.')
